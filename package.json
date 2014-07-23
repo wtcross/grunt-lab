@@ -1,14 +1,26 @@
 {
   "name": "grunt-lab",
-  "version": "1.0.0",
   "description": "Use the Spumko Lab test utility in Grunt.",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+  "version": "1.0.0",
+  "homepage": "https://github.com/wtcross/grunt-lab",
+  "author": {
+    "name": "Tyler Cross",
+    "email": "tcross@bandwidth.com",
+    "url": "https://github.com/wtcross"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:wtcross/grunt-lab.git"
   },
+  "bugs": {
+    "url": "https://github.com/wtcross/grunt-lab/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/wtcross/grunt-lab/blob/master/LICENSE"
+    }
+  ],
   "scripts": {
     "test": "grunt"
   },
@@ -26,5 +38,12 @@
   },
   "peerDependencies" : {
     "lab": "3.x"
-  }
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "files": [
+    "tasks",
+    "LICENSE"
+  ]
 }
