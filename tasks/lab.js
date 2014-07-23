@@ -40,7 +40,7 @@ module.exports = function (grunt) {
 			{ name : "verbose",       flag : "-v", switch : true }
 		];
 
-		var config = _.extend(defaultConfig, grunt.config.get("lab") || {});
+		var config = _.extend(defaultConfig, grunt.config.get("lab"));
 
 		var args = [];
 
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
 			},
 			function (error) {
 				grunt.log.error("Some tests failed.");
-				grunt.fail.fatal(error);
+				grunt.fatal(error);
 			}
 		)
 		.nodeify(done);

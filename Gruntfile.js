@@ -59,7 +59,7 @@ module.exports = function (grunt) {
 		var done = this.async();
 
 		var options = {
-			args : [ "-c" ],
+			args : [ "-c", "-t", 100, "-p" ],
 			cmd  : localCommand("lab"),
 			opts : {
 				stdio : "inherit"

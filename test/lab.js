@@ -8,41 +8,25 @@ var grunt = require("grunt");
 
 var describe = Lab.experiment;
 var before = Lab.before;
-var beforeEach = Lab.beforeEach;
-var afterEach = Lab.afterEach;
+var after = Lab.after;
 var it = Lab.test;
 var expect = Lab.expect;
 
 describe("grunt-lab plugin", function () {
 	runTask.loadTasks("tasks");
 
-	var spawnStub;
-
-	beforeEach(function (done) {
-		spawnStub = sinon.stub(grunt.util, "spawn").callsArg(1);
-		done();
-	});
-
-	afterEach(function (done) {
-		spawnStub.restore();
-		done();
-	});
-
 	describe("properties", function () {
 		var task;
+		var spawnStub;
 
 		before(function (done) {
+			spawnStub = sinon.stub(grunt.util, "spawn").callsArg(1);
 			task = runTask.task("lab");
-			done();
+			task.run(done);
 		});
 
-		beforeEach(function (done) {
-			task.run(function () {
-				done();
-			});
-		});
-
-		afterEach(function (done) {
+		after(function (done) {
+			spawnStub.restore();
 			task.clean(done);
 		});
 
@@ -60,17 +44,16 @@ describe("grunt-lab plugin", function () {
 	describe("lab cli execution", function () {
 		describe("with no configuration", function () {
 			var task;
+			var spawnStub;
 
 			before(function (done) {
+				spawnStub = sinon.stub(grunt.util, "spawn").callsArg(1);
 				task = runTask.task("lab");
-				done();
-			});
-
-			beforeEach(function (done) {
 				task.run(done);
 			});
 
-			afterEach(function (done) {
+			after(function (done) {
+				spawnStub.restore();
 				task.clean(done);
 			});
 
@@ -89,8 +72,10 @@ describe("grunt-lab plugin", function () {
 
 		describe("with configuration", function () {
 			var task;
+			var spawnStub;
 
 			before(function (done) {
+				spawnStub = sinon.stub(grunt.util, "spawn").callsArg(1);
 				task = runTask.task("lab", {
 					coverage    : true,
 					color       : true,
@@ -98,14 +83,12 @@ describe("grunt-lab plugin", function () {
 					reporter    : "console",
 					minCoverage : 100
 				});
-				done();
-			});
 
-			beforeEach(function (done) {
 				task.run(done);
 			});
 
-			afterEach(function (done) {
+			after(function (done) {
+				spawnStub.restore();
 				task.clean(done);
 			});
 
@@ -121,6 +104,35 @@ describe("grunt-lab plugin", function () {
 					opts : { stdio : "inherit" }
 				});
 
+				done();
+			});
+		});
+
+		describe("resulting in an error", function () {
+			var task;
+			var spawnStub;
+			var fatalStub;
+			var error;
+
+			before(function (done) {
+				error = new Error("This is an error");
+				fatalStub = sinon.stub(grunt, "fatal");
+				spawnStub = sinon.stub(grunt.util, "spawn").callsArgWith(1, error);
+
+				task = runTask.task("lab");
+				task.run(done);
+			});
+
+			after(function (done) {
+				spawnStub.restore();
+				fatalStub.restore();
+				task.clean(done);
+			});
+
+			it("tells grunt to fail fatally", function (done) {
+				expect(spawnStub.calledOnce).to.equal(true);
+				expect(fatalStub.calledOnce).to.equal(true);
+				expect(fatalStub.calledWith(error)).to.equal(true);
 				done();
 			});
 		});
