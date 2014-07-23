@@ -1,6 +1,5 @@
 "use strict";
 
-var _ =  require("lodash");
 var path = require("path");
 
 function localCommand (command) {
@@ -8,6 +7,7 @@ function localCommand (command) {
 }
 
 module.exports = function (grunt) {
+	var _ = grunt.util._;
 
 	var sourceFiles = [ "*.js", "tasks/**/*.js" ];
 	var testFiles   = [ "test/**/*.js" ];
