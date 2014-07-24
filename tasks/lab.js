@@ -27,7 +27,7 @@ module.exports = function (grunt) {
 			{ name : "dryRun",        flag : "-d", switch : true },
 			{ name : "nodeEnv",       flag : "-e", switch : false },
 			{ name : "pattern",       flag : "-g", switch : false },
-			{ name : "global",        flag : "-G", switch : false },
+			{ name : "global",        flag : "-G", switch : true },
 			{ name : "identifier",    flag : "-i", switch : false },
 			{ name : "ignoreGlobals", flag : "-I", switch : false },
 			{ name : "leakDetection", flag : "-l", switch : true },
