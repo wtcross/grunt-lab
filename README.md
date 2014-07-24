@@ -54,8 +54,9 @@ It is not required to specify any configuration at all if you don't want to.
 
 ### Contributing
 There are only a few things to keep in mind when submitting a PR:
-1) all tests pass
-2) 100% test coverage
-3) linting and style guidelines are followed
+
+1. linting and style guidelines are followed
+2. 100% test coverage
+3. all tests pass
 
 Otherwise, the build will fail. :)
