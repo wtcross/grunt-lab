@@ -60,7 +60,7 @@ module.exports = function (grunt) {
 
 		q.ninvoke(grunt.util, "spawn", {
 			args : _.flatten(args),
-			cmd  : path.join(__dirname, "../node_modules", ".bin", "lab"),
+			cmd  : path.join(path.resolve(require.resolve("lab")), "../../.bin/lab"),
 			opts : {
 				stdio : "inherit"
 			}
