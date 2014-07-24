@@ -9,7 +9,6 @@
 "use strict";
 
 var path = require("path");
-var q = require("q");
 
 module.exports = function (grunt) {
 	var _ = grunt.util._;
@@ -58,22 +57,21 @@ module.exports = function (grunt) {
 
 		args.push(grunt.file.expand(config.files));
 
-		q.ninvoke(grunt.util, "spawn", {
+		grunt.util.spawn({
 			args : _.flatten(args),
 			cmd  : path.join(path.resolve(require.resolve("lab")), "../../.bin/lab"),
 			opts : {
 				stdio : "inherit"
 			}
-		})
-		.then(
-			function () {
-				grunt.log.ok("All tests passed.");
-			},
-			function (error) {
+		}, function (error) {
+			if (error) {
 				grunt.log.error("Some tests failed.");
 				grunt.fatal(error);
+			} else {
+				grunt.log.ok("All tests passed.");
 			}
-		)
-		.nodeify(done);
+
+			done();
+		});
 	});
 };
