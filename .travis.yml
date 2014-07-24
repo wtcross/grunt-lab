@@ -2,14 +2,11 @@ language: node_js
 node_js:
   - '0.11'
   - '0.10'
-install:
-  - npm install
-  - npm install lab@3.x
 deploy:
   provider: npm
   email: tcross@bandwidth.com
-  api_key:
-    secure: "Hd2sApOJuzgnQmbQ8KAMkJiqcC1qnmqXLfAxDuS7MWlF6G/drp7R9O/iGsfb+oxbqtBrHUzfN4E2trLp2W3tyTwulW6WIu80iyXGV7GJbr1zVJ6ZpN5x8+A/9uTd0bQr0XnuTHzYIHi3NMDuWLWvBVoa9aAeXoeNSkljFLfb3Lw="
   on:
     repo: wtcross/grunt-lab
     branch: master
+  api_key:
+    secure: SOySFNPJa9ghqcDXA2tMjLlPnJm4JCmp1rEM5U4iiqY7qJoY6AfIzFSve01e1lLLqswAkUJAoI9/W8OWic9k5lNKfOVX8y/dxFzo+zvnz3oSp3lpfyAyR2rRpHcKmEPj3eLev+k1wbQmElD65HAhyfyOsPLneStO6zCjBYbDOzE=
