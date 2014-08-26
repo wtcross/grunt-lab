@@ -2,9 +2,6 @@ language: node_js
 node_js:
   - '0.11'
   - '0.10'
-install:
-  - npm install
-  - npm install lab@3.x
 deploy:
   provider: npm
   email: tcross@bandwidth.com

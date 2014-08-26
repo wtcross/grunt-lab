@@ -1,15 +1,17 @@
 "use strict";
 
 var Lab = require("lab");
+var lab = exports.lab = Lab.script();
+
 var runTask = require("grunt-run-task");
 var sinon = require("sinon");
 var path = require("path");
 var grunt = require("grunt");
 
-var describe = Lab.experiment;
-var before = Lab.before;
-var after = Lab.after;
-var it = Lab.test;
+var describe = lab.describe;
+var it = lab.it;
+var before = lab.before;
+var after = lab.after;
 var expect = Lab.expect;
 
 describe("grunt-lab plugin", function () {

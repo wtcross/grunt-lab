@@ -31,10 +31,11 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-jscs": "^0.6.1",
     "grunt-run-task": "0.1.0-rc5",
+    "lab": "^4.1.0",
     "sinon": "^1.10.2"
   },
-  "peerDependencies" : {
-    "lab": "3.x"
+  "peerDependencies": {
+    "lab": ">=3.x"
   },
   "keywords": [
     "gruntplugin"
