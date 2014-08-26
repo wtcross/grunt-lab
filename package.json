@@ -34,7 +34,7 @@
     "sinon": "^1.10.2"
   },
   "peerDependencies" : {
-    "lab": "3.x"
+    "lab": ">3.x"
   },
   "keywords": [
     "gruntplugin"
