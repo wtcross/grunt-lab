@@ -5,7 +5,7 @@ grunt-lab [![Build Status](https://travis-ci.org/wtcross/grunt-lab.svg)](https:/
 [![DevDependencies Status](https://david-dm.org/wtcross/grunt-lab/dev-status.png)](https://david-dm.org/wtcross/grunt-lab#info=devDependencies)
 [![PeerDependencies Status](https://david-dm.org/wtcross/grunt-lab/peer-status.png)](https://david-dm.org/wtcross/grunt-lab#info=peerDependencies)
 
-Use the Spumko [Lab](https://github.com/spumko/lab) test utility in Grunt.
+Use the [hapi.js lab](https://github.com/hapijs/lab) test utility in Grunt.
 
 ### Configuration
 All configuration is optional. See the Lab [documentation](https://github.com/spumko/lab) for more information about each parameter.
