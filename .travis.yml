@@ -4,7 +4,7 @@ node_js:
   - '0.10'
 install:
   - npm install
-  - npm install lab@3.x
+  - npm install ${LAB_PACKAGE}
 deploy:
   provider: npm
   email: tcross@bandwidth.com
@@ -13,3 +13,6 @@ deploy:
     branch: master
   api_key:
     secure: SOySFNPJa9ghqcDXA2tMjLlPnJm4JCmp1rEM5U4iiqY7qJoY6AfIzFSve01e1lLLqswAkUJAoI9/W8OWic9k5lNKfOVX8y/dxFzo+zvnz3oSp3lpfyAyR2rRpHcKmEPj3eLev+k1wbQmElD65HAhyfyOsPLneStO6zCjBYbDOzE=
+env:
+  - LAB_PACKAGE="lab@3.x"
+  - LAB_PACKAGE="lab@4.x"
