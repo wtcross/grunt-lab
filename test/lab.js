@@ -79,11 +79,51 @@ describe("grunt-lab plugin", function () {
 			before(function (done) {
 				spawnStub = sinon.stub(grunt.util, "spawn").callsArg(1);
 				task = runTask.task("lab", {
-					coverage    : true,
-					color       : true,
-					parallel    : true,
-					reporter    : "console",
-					minCoverage : 100
+					coverage      : true,
+					color         : true,
+					parallel      : true,
+					leakDetection : false,
+					reporter      : "console",
+					minCoverage   : 100
+				});
+
+				task.run(done);
+			});
+
+			after(function (done) {
+				spawnStub.restore();
+				task.clean(done);
+			});
+
+			it("executes the correct command", function (done) {
+				expect(spawnStub.calledOnce).to.equal(true);
+
+				expect(spawnStub.firstCall.args[0]).to.deep.equal({
+					cmd  : path.join(__dirname, "../node_modules", ".bin", "lab"),
+					args : [
+						"-c", "-C", "-p", "-l", "-r",
+						"console", "-t", 100, "test/lab.js"
+					],
+					opts : { stdio : "inherit" }
+				});
+
+				done();
+			});
+		});
+
+		describe("with inverted configuration", function () {
+			var task;
+			var spawnStub;
+
+			before(function (done) {
+				spawnStub = sinon.stub(grunt.util, "spawn").callsArg(1);
+				task = runTask.task("lab", {
+					coverage      : true,
+					color         : true,
+					parallel      : true,
+					leakDetection : true,
+					reporter      : "console",
+					minCoverage   : 100
 				});
 
 				task.run(done);
