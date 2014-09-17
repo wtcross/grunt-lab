@@ -21,22 +21,22 @@ module.exports = function (grunt) {
 		};
 
 		var labOptions = [
-			{ name : "coverage",      flag : "-c", switch : true },
-			{ name : "color",         flag : "-C", switch : true },
-			{ name : "dryRun",        flag : "-d", switch : true },
-			{ name : "nodeEnv",       flag : "-e", switch : false },
-			{ name : "pattern",       flag : "-g", switch : false },
-			{ name : "global",        flag : "-G", switch : true },
-			{ name : "identifier",    flag : "-i", switch : false },
-			{ name : "ignoreGlobals", flag : "-I", switch : false },
-			{ name : "leakDetection", flag : "-l", switch : true },
-			{ name : "timeout",       flag : "-m", switch : false },
-			{ name : "reportFile",    flag : "-o", switch : false },
-			{ name : "parallel",      flag : "-p", switch : true },
-			{ name : "reporter",      flag : "-r", switch : false },
-			{ name : "silence",       flag : "-s", switch : true },
-			{ name : "minCoverage",   flag : "-t", switch : false },
-			{ name : "verbose",       flag : "-v", switch : true }
+			{ name : "coverage",             flag : "-c", switch : true },
+			{ name : "color",                flag : "-C", switch : true },
+			{ name : "dryRun",               flag : "-d", switch : true },
+			{ name : "nodeEnv",              flag : "-e", switch : false },
+			{ name : "pattern",              flag : "-g", switch : false },
+			{ name : "global",               flag : "-G", switch : true },
+			{ name : "identifier",           flag : "-i", switch : false },
+			{ name : "ignoreGlobals",        flag : "-I", switch : false },
+			{ name : "disableLeakDetection", flag : "-l", switch : true },
+			{ name : "timeout",              flag : "-m", switch : false },
+			{ name : "reportFile",           flag : "-o", switch : false },
+			{ name : "parallel",             flag : "-p", switch : true },
+			{ name : "reporter",             flag : "-r", switch : false },
+			{ name : "silence",              flag : "-s", switch : true },
+			{ name : "minCoverage",          flag : "-t", switch : false },
+			{ name : "verbose",              flag : "-v", switch : true }
 		];
 
 		var config = _.extend(defaultConfig, grunt.config.get("lab"));
@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 		_.forIn(config, function (configValue, configName) {
 			var option = _.first(_.where(labOptions, { name : configName }));
 
-			if (option) {
+			if (option && configValue) {
 				args.push(option.flag);
 
 				if (!option.switch) {

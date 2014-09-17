@@ -73,40 +73,51 @@ describe("grunt-lab plugin", function () {
 		});
 
 		describe("with configuration", function () {
-			var task;
-			var spawnStub;
+			describe("all enabled", function () {
 
-			before(function (done) {
-				spawnStub = sinon.stub(grunt.util, "spawn").callsArg(1);
-				task = runTask.task("lab", {
-					coverage    : true,
-					color       : true,
-					parallel    : true,
-					reporter    : "console",
-					minCoverage : 100
-				});
-
-				task.run(done);
 			});
 
-			after(function (done) {
-				spawnStub.restore();
-				task.clean(done);
+			describe("all disabled", function () {
+
 			});
 
-			it("executes the correct command", function (done) {
-				expect(spawnStub.calledOnce).to.equal(true);
+			describe("some enabled", function () {
+				var task;
+				var spawnStub;
 
-				expect(spawnStub.firstCall.args[0]).to.deep.equal({
-					cmd  : path.join(__dirname, "../node_modules", ".bin", "lab"),
-					args : [
-						"-c", "-C", "-p", "-r",
-						"console", "-t", 100, "test/lab.js"
-					],
-					opts : { stdio : "inherit" }
+				before(function (done) {
+					spawnStub = sinon.stub(grunt.util, "spawn").callsArg(1);
+					task = runTask.task("lab", {
+						coverage             : true,
+						color                : true,
+						parallel             : false,
+						disableLeakDetection : true,
+						reporter             : "console",
+						minCoverage          : 100
+					});
+
+					task.run(done);
 				});
 
-				done();
+				after(function (done) {
+					spawnStub.restore();
+					task.clean(done);
+				});
+
+				it("executes the correct command", function (done) {
+					expect(spawnStub.calledOnce).to.equal(true);
+
+					expect(spawnStub.firstCall.args[0]).to.deep.equal({
+						cmd  : path.join(__dirname, "../node_modules", ".bin", "lab"),
+						args : [
+							"-c", "-C", "-l", "-r",
+							"console", "-t", 100, "test/lab.js"
+						],
+						opts : { stdio : "inherit" }
+					});
+
+					done();
+				});
 			});
 		});
 
