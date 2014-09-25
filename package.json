@@ -1,7 +1,7 @@
 {
   "name": "grunt-lab",
   "description": "Use the Spumko Lab test utility in Grunt.",
-  "version": "1.0.4",
+  "version": "1.2.4",
   "homepage": "https://github.com/wtcross/grunt-lab",
   "author": {
     "name": "Tyler Cross",
