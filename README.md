@@ -21,7 +21,7 @@ All configuration is optional. See the Lab [documentation](https://github.com/sp
 | global           | boolean | false              | -G       |
 | identifier       | string  |                    | -i       |
 | ignoreGlobals    | string  |                    | -I       |
-| leakDetection    | boolean | false              | -l       |
+| disableLeakDetection    | boolean | false              | -l       |
 | timeout          | integer | 2000               | -m       |
 | reportFile       | string  |                    | -o       |
 | parallel         | boolean | false              | -p       |
