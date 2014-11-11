@@ -9,6 +9,7 @@
 "use strict";
 
 var path = require("path");
+var getBin = require("./getBin");
 
 module.exports = function (grunt) {
 	var _ = grunt.util._;
@@ -59,7 +60,7 @@ module.exports = function (grunt) {
 
 		grunt.util.spawn({
 			args : _.flatten(args),
-			cmd  : path.join(path.resolve(require.resolve("lab")), "../../.bin/lab"),
+			cmd  : path.join(path.resolve(require.resolve("lab")), getBin("../../.bin/lab")),
 			opts : {
 				stdio : "inherit"
 			}
