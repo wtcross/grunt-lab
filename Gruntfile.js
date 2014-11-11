@@ -1,9 +1,10 @@
 "use strict";
 
 var path = require("path");
+var getBin = require("./tasks/getBin");
 
 function localCommand (command) {
-	return path.join(__dirname, "node_modules", ".bin", command);
+	return path.join(__dirname, "node_modules", ".bin", getBin(command));
 }
 
 module.exports = function (grunt) {

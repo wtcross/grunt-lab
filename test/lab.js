@@ -8,6 +8,8 @@ var sinon = require("sinon");
 var path = require("path");
 var grunt = require("grunt");
 
+var getBin = require("../tasks/getBin");
+
 var describe = lab.describe;
 var it = lab.it;
 var before = lab.before;
@@ -63,8 +65,8 @@ describe("grunt-lab plugin", function () {
 				expect(spawnStub.calledOnce).to.equal(true);
 
 				expect(spawnStub.firstCall.args[0]).to.deep.equal({
-					cmd  : path.join(__dirname, "../node_modules", ".bin", "lab"),
-					args : [ "test/lab.js" ],
+					cmd  : path.join(__dirname, "../node_modules", ".bin", getBin("lab")),
+					args : [ "test/getBin.js", "test/lab.js" ],
 					opts : { stdio : "inherit" }
 				});
 
@@ -108,10 +110,10 @@ describe("grunt-lab plugin", function () {
 					expect(spawnStub.calledOnce).to.equal(true);
 
 					expect(spawnStub.firstCall.args[0]).to.deep.equal({
-						cmd  : path.join(__dirname, "../node_modules", ".bin", "lab"),
+						cmd  : path.join(__dirname, "../node_modules", ".bin", getBin("lab")),
 						args : [
 							"-c", "-C", "-l", "-r",
-							"console", "-t", 100, "test/lab.js"
+							"console", "-t", 100, "test/getBin.js", "test/lab.js"
 						],
 						opts : { stdio : "inherit" }
 					});
