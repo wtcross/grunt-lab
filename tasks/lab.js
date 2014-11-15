@@ -57,16 +57,27 @@ module.exports = function (grunt) {
 
 		args.push(grunt.file.expand(config.files));
 
+		var binName = [
+			"lab",
+			/^win/.test(process.platform) ? ".cmd" : ""
+		].join("");
+
+		var binPath = path.join(
+			path.resolve(require.resolve("lab")),
+			"..", "..", ".bin", binName
+		);
+
 		grunt.util.spawn({
+			cmd  : binPath,
 			args : _.flatten(args),
-			cmd  : path.join(path.resolve(require.resolve("lab")), "../../.bin/lab"),
 			opts : {
 				stdio : "inherit"
 			}
 		}, function (error) {
 			if (error) {
+				grunt.log.writeln();
 				grunt.log.error("Some tests failed.");
-				grunt.fatal(error);
+				grunt.fail.fatal(error);
 			} else {
 				grunt.log.ok("All tests passed.");
 			}

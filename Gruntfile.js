@@ -10,7 +10,7 @@ module.exports = function (grunt) {
 	var _ = grunt.util._;
 
 	var sourceFiles = [ "*.js", "tasks/**/*.js" ];
-	var testFiles   = [ "test/**/*.js" ];
+	var testFiles   = [ "test/**/*_spec.js" ];
 	var allFiles    = sourceFiles.concat(testFiles);
 
 	var defaultJsHintOptions = grunt.file.readJSON("./.jshint.json");
@@ -68,6 +68,7 @@ module.exports = function (grunt) {
 
 		grunt.util.spawn(options, function (error) {
 			if (error) {
+				grunt.log.writeln();
 				grunt.log.error("Some tests failed.");
 				grunt.fail.fatal(error);
 			}
