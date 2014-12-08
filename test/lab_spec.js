@@ -1,18 +1,18 @@
 "use strict";
+var Code = require("code");
+var Lab  = require("lab");
+var lab  = exports.lab = Lab.script();
 
-var Lab = require("lab");
-var lab = exports.lab = Lab.script();
-
-var runTask = require("grunt-run-task");
-var sinon = require("sinon");
-var path = require("path");
+var runTask    = require("grunt-run-task");
+var sinon      = require("sinon");
+var path       = require("path");
 var Properties = require("apparition").Properties;
 
 var describe = lab.describe;
-var it = lab.it;
-var before = lab.before;
-var after = lab.after;
-var expect = Lab.expect;
+var it       = lab.it;
+var before   = lab.before;
+var after    = lab.after;
+var expect   = Code.expect;
 
 describe("grunt-lab plugin", function () {
 	runTask.loadTasks("tasks");
