@@ -184,12 +184,12 @@ describe("grunt-lab plugin", function () {
 			});
 
 			it("spawns lab", function (done) {
-				expect(spawn.calledOnce).to.be.true;
+				expect(spawn.calledOnce).to.equal(true);
 				done();
 			});
 
 			it("tells grunt to fail fatally", function (done) {
-				expect(failed).to.be.true;
+				expect(failed).to.equal(true);
 				done();
 			});
 		});
