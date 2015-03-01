@@ -33,7 +33,7 @@ describe("grunt-lab plugin", function () {
 		});
 
 		it("is not a multitask", function (done) {
-			expect(task.multi).to.equal(false);
+			expect(task.multi).to.be.false();
 			done();
 		});
 
@@ -60,7 +60,7 @@ describe("grunt-lab plugin", function () {
 			});
 
 			it("executes the correct command", function (done) {
-				expect(spawn.calledOnce).to.equal(true);
+				expect(spawn.calledOnce).to.be.true();
 
 				expect(spawn.firstCall.args[0]).to.deep.equal({
 					cmd  : path.join(__dirname, "..", "node_modules", ".bin", "lab"),
@@ -111,7 +111,7 @@ describe("grunt-lab plugin", function () {
 				});
 
 				it("executes the correct command", function (done) {
-					expect(spawn.calledOnce).to.equal(true);
+					expect(spawn.calledOnce).to.be.true();
 
 					expect(spawn.firstCall.args[0]).to.deep.equal({
 						cmd  : path.join(__dirname, "..", "node_modules", ".bin", "lab.cmd"),
@@ -142,7 +142,7 @@ describe("grunt-lab plugin", function () {
 				});
 
 				it("executes the correct command", function (done) {
-					expect(spawn.calledOnce).to.equal(true);
+					expect(spawn.calledOnce).to.be.true();
 
 					expect(spawn.firstCall.args[0]).to.deep.equal({
 						cmd  : path.join(__dirname, "..", "node_modules", ".bin", "lab"),
@@ -184,12 +184,12 @@ describe("grunt-lab plugin", function () {
 			});
 
 			it("spawns lab", function (done) {
-				expect(spawn.calledOnce).to.equal(true);
+				expect(spawn.calledOnce).to.be.true();
 				done();
 			});
 
 			it("tells grunt to fail fatally", function (done) {
-				expect(failed).to.equal(true);
+				expect(failed).to.be.true();
 				done();
 			});
 		});
