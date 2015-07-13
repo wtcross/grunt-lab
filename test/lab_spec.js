@@ -63,7 +63,7 @@ describe("grunt-lab plugin", function () {
 				expect(spawn.calledOnce).to.be.true();
 
 				expect(spawn.firstCall.args[0]).to.deep.equal({
-					cmd  : path.join(__dirname, "..", "node_modules", ".bin", "lab"),
+					cmd  : path.join(__dirname, "..", "node_modules", "lab", "bin", "lab"),
 					args : [ "test/lab_spec.js" ],
 					opts : { stdio : "inherit" }
 				});
@@ -114,7 +114,7 @@ describe("grunt-lab plugin", function () {
 					expect(spawn.calledOnce).to.be.true();
 
 					expect(spawn.firstCall.args[0]).to.deep.equal({
-						cmd  : path.join(__dirname, "..", "node_modules", ".bin", "lab.cmd"),
+						cmd  : path.join(__dirname, "..", "node_modules", "lab", "bin", "lab.cmd"),
 						args : [
 							"-c", "-C", "-l", "-r",
 							"console", "-t", 100, "test/lab_spec.js"
@@ -145,7 +145,7 @@ describe("grunt-lab plugin", function () {
 					expect(spawn.calledOnce).to.be.true();
 
 					expect(spawn.firstCall.args[0]).to.deep.equal({
-						cmd  : path.join(__dirname, "..", "node_modules", ".bin", "lab"),
+						cmd  : path.join(__dirname, "..", "node_modules", "lab", "bin", "lab"),
 						args : [
 							"-c", "-C", "-l", "-r",
 							"console", "-t", 100, "test/lab_spec.js"

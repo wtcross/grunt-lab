@@ -64,7 +64,7 @@ module.exports = function (grunt) {
 
 		var binPath = path.join(
 			path.resolve(require.resolve("lab")),
-			"..", "..", ".bin", binName
+			"..", "..", "bin", binName
 		);
 
 		grunt.util.spawn({
