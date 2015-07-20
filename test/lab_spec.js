@@ -83,7 +83,8 @@ describe("grunt-lab plugin", function () {
 					parallel             : false,
 					disableLeakDetection : true,
 					reporter             : "console",
-					minCoverage          : 100
+					minCoverage          : 100,
+					timeout              : 0
 				});
 				spawn = sinon.stub(task.grunt.util, "spawn").callsArg(1);
 
@@ -117,7 +118,7 @@ describe("grunt-lab plugin", function () {
 						cmd  : path.join(__dirname, "..", "node_modules", "lab", "bin", "lab.cmd"),
 						args : [
 							"-c", "-C", "-l", "-r",
-							"console", "-t", 100, "test/lab_spec.js"
+							"console", "-t", 100, "-m", 0, "test/lab_spec.js"
 						],
 						opts : { stdio : "inherit" }
 					});
@@ -148,7 +149,7 @@ describe("grunt-lab plugin", function () {
 						cmd  : path.join(__dirname, "..", "node_modules", "lab", "bin", "lab"),
 						args : [
 							"-c", "-C", "-l", "-r",
-							"console", "-t", 100, "test/lab_spec.js"
+							"console", "-t", 100, "-m", 0, "test/lab_spec.js"
 						],
 						opts : { stdio : "inherit" }
 					});

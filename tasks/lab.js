@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 		_.forIn(config, function (configValue, configName) {
 			var option = _.first(_.where(labOptions, { name : configName }));
 
-			if (option && configValue) {
+			if (option && (configValue || _.isNumber(configValue))) {
 				args.push(option.flag);
 
 				if (!option.switch) {
