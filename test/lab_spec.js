@@ -85,7 +85,7 @@ describe("grunt-lab plugin", function () {
 					reporter             : "console",
 					minCoverage          : 100,
 					timeout              : 0,
-					cmd					 : ['-v']
+					cmd					 : ["-v"]
 				});
 				spawn = sinon.stub(task.grunt.util, "spawn").callsArg(1);
 
