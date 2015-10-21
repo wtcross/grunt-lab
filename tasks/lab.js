@@ -17,7 +17,8 @@ module.exports = function (grunt) {
 		var done = this.async();
 
 		var defaultConfig = {
-			files : [ "test/**/*.js" ]
+			files : [ "test/**/*.js" ],
+			cmd: []
 		};
 
 		var labOptions = [
@@ -53,6 +54,10 @@ module.exports = function (grunt) {
 					args.push(configValue);
 				}
 			}
+		});
+
+		_.forIn(config.cmd, function(cmd){
+			args.push(cmd);
 		});
 
 		args.push(grunt.file.expand(config.files));
