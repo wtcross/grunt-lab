@@ -29,6 +29,7 @@ All configuration is optional. See the Lab [documentation](https://github.com/sp
 | silence          | boolean | false              | -s       |
 | minCoverage      | integer |                    | -t       |
 | verbose          | boolean | false              | -v       |
+| cmd              | [glob]  | []                 |          |
 
 An example Gruntfile using grunt-lab may look like this:
 ```
